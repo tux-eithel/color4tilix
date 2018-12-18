@@ -36,7 +36,7 @@ func main() {
 		return color4tilix.NewItermColorsTransformer(n, data)
 	}
 
-	c, _ := color4tilix.CreateBatch(*dir, files, fnc, ee)
+	c := color4tilix.CreateBatch(*dir, files, fnc, ee)
 	fmt.Printf("Converted %d files\n", c)
 	close(ee)
 

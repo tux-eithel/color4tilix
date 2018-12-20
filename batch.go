@@ -61,6 +61,8 @@ func writeFile(dir string, w <-chan *TilixColor, e chan error) <-chan int {
 		}
 
 		cont <- c
+		close(cont)
+
 	}()
 
 	return cont

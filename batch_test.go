@@ -158,7 +158,97 @@ func TestCreateBatch(t *testing.T) {
 			wait.Wait()
 
 			if numErrors != tt.errors {
-				t.Errorf("CreateBatch(): check errors => %v, want %v = erros %v", numErrors, tt.errors, listError)
+				t.Errorf("CreateBatch(): check errors => %v, want %v = errors %v", numErrors, tt.errors, listError)
+				return
+			}
+
+		})
+	}
+}
+
+func Test_writeFile(t *testing.T) {
+
+	dir, err := ioutil.TempDir("", "Test_writeFile")
+	if err != nil {
+		t.Fatalf("unable to write tmp dir: %v", err)
+	}
+	defer os.RemoveAll(dir) // clean up
+
+	tests := []struct {
+		name   string
+		dir    string
+		arg    *TilixColor
+		want   int
+		errors int
+	}{
+		{
+			name:   "null schema",
+			arg:    nil,
+			dir:    "",
+			want:   0,
+			errors: 1,
+		},
+		{
+			name:   "not valid url",
+			arg:    &TilixColor{},
+			dir:    "",
+			want:   0,
+			errors: 1,
+		},
+		{
+			name:   "read only file",
+			arg:    &TilixColor{},
+			dir:    dir,
+			want:   1,
+			errors: 0,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+
+			numErrors := 0
+			listError := make([]error, 0)
+			ee := make(chan error)
+			waitE := &sync.WaitGroup{}
+
+			waitE.Add(1)
+			go func() {
+				for e := range ee {
+					numErrors++
+					listError = append(listError, e)
+				}
+				waitE.Done()
+
+			}()
+
+			tc := make(chan *TilixColor)
+
+			outC := writeFile(tt.dir, tc, ee)
+
+			wait := &sync.WaitGroup{}
+			wait.Add(1)
+			number_things := 0
+			go func() {
+				for c := range outC {
+					number_things = number_things + c
+				}
+				wait.Done()
+			}()
+
+			tc <- tt.arg
+			close(tc)
+			wait.Wait()
+
+			close(ee)
+			waitE.Wait()
+
+			if number_things != tt.want {
+				t.Errorf("writeFile() = %v, want %v", number_things, tt.want)
+				return
+			}
+
+			if numErrors != tt.errors {
+				t.Errorf("writeFile(): check errors => %v, want %v = errors %v", numErrors, tt.errors, listError)
 				return
 			}
 

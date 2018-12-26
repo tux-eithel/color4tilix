@@ -11,7 +11,7 @@
 //
 // If you'd like to transform another terminal schema into Tilix color schemes, (and you're fine with CreateBatch workflow) you should do:
 //   - define a new struct which implements Paletter interface
-//   - provide a compatiple FncTransformer function
+//   - provide a compatible FncTransformer function
 package color4tilix
 
 import (

@@ -25,7 +25,8 @@ go get -u github.com/tux-eithel/color4tilix/...
 
 and then run `iterm2tilix -d dir_with_itermcolors_files`.
 
-You can find inside release files translated starting from [Iterm2-color-schemes](https://iterm2colorschemes.com/).
+You can find inside [release](https://github.com/tux-eithel/color4tilix/releases/latest) Tilix color schemes translated starting from [Iterm2-color-schemes](https://iterm2colorschemes.com/).  
+After the download, copy the json files inside `~/.config/tilix/schemes` directory.
 
 ## How to transform \*term\* color schemes into Tilix color schemes
 

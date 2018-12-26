@@ -10,8 +10,8 @@
 // For this reasons, the library has the FncTransformer type, which is used by CreateBatch function.
 //
 // If you'd like to transform another terminal schema into Tilix color schemes, (and you're fine with CreateBatch workflow) you should do:
-//   - define a new struct which implements Paletter interface
-//   - provide a compatible FncTransformer function
+//  - define a new struct which implements Paletter interface
+//  - provide a compatible FncTransformer function
 package color4tilix
 
 import (

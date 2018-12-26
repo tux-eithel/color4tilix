@@ -25,7 +25,7 @@ go get -u github.com/tux-eithel/color4tilix/...
 
 and then run `iterm2tilix -d dir_with_itermcolors_files`.
 
-## How to transform *term* color schemes into Tilix color schemes
+## How to transform \*term\* color schemes into Tilix color schemes
 
 If you'd like to transform another terminal schema into Tilix color schemes, (and you're fine with `CreateBatch` workflow) you should do:
  

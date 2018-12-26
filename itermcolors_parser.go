@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// MainXml is the main xml node of a .itermolors file.
+// MainXml is the main xml node of a .itermcolors file.
 type MainXml struct {
 	XMLName xml.Name `xml:"plist"`
 	Data    Dict     `xml:"dict"`
@@ -58,7 +58,7 @@ func (it *ItermSchema) Comment() string {
 	return it.description
 }
 func (it *ItermSchema) UseThemeColor() bool {
-	return false
+	return false // It's better to set it as false, otherwise Tilix doesn't display the theme's foreground/background colors.
 }
 
 func (it *ItermSchema) ForegroundColor() *color.RGBA { return colorOrNil(it, "Foreground Color") }

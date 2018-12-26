@@ -1,3 +1,17 @@
+// Package color4tilix is a library to help to translate terminal color schema to Tilix color schema.
+// It provides and maintains the struct necessary to create the right json for Tilix color schema.
+//
+// It defines an interface, Paletter, which can be used to define a new struct to translate an existing schema
+// to a Tilix json schema. The struct, will be used by NewTilixColor function which is in charge to build a correct TilixColor struct.
+// As example, the library provides ItermSchema struct used to translate .itermcolors files (iTerm color schema) into Tilix color schema.
+//
+// The library provides also a function, CreateBatch, which can be used to read files, translate and save it.
+// Generally a conversion process requires some input files, an output dir and a set of instruction to translate input files from one format to another one.
+// For this reasons, the library has the FncTransformer type, which is used by CreateBatch function.
+//
+// If you'd like to transform another terminal schema into Tilix color schemes, (and you're fine with CreateBatch workflow) you should do:
+//   - define a new struct which implements Paletter interface
+//   - provide a compatiple FncTransformer function
 package color4tilix
 
 import (
@@ -26,7 +40,7 @@ type TilixColor struct {
 }
 
 // Paletter is an interface for parsers.
-// It's a big interface, but in this way we can enforce the fields necessary for the json Tilix schema,
+// It's a big interface, but in this way we can enforce the necessary fields for the json Tilix schema,
 // delegating the actual implementation to the parser (color schemas between terminal are pretty vary).
 type Paletter interface {
 	Name() string

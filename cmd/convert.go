@@ -1,3 +1,7 @@
+// convert is an example cli tool to try color4tilix library used to convert
+// .itermcolors files in tilix json schema files.
+// In this example we use the itermcolors_parser, but users can implement their own parser.
+// This can be used as example for other conversions.
 package main
 
 import (

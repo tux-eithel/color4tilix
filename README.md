@@ -15,22 +15,25 @@ Generally a conversion process uses a list of input files, an output directory w
 
 The library provides a parser ([itermcolors_parser.go](itermcolors_parser.go)) in order to translate [iTerm](https://iterm2.com/) color schemes in Tilix color schemes.
 
-The CLI tool ([convert.go](iterm2tilix/convert.go)) provided by the library allow you to convert Iterm color schemes and can be used an example to create your own color scheme translator.
+The CLI tool ([convert.go](iterm2tilix/convert.go)) provided by the library allow you to convert Iterm color schemes and can be used as an example to create your own color scheme translator.
 
-To get cli tool for conver .itermcolors schema file into Tilix color scheme install using:
+To get cli tool for conver .itermcolors schema file into Tilix color scheme, install the tool using:
 
 ```
 go get -u github.com/tux-eithel/color4tilix/...
 ```
 
-and then run `iterm2tilix -d dir_with_itermcolors_files`.
+download the iTerm2 schemes from here [https://iterm2colorschemes.com/](https://iterm2colorschemes.com/) and then run `iterm2tilix -d dir_with_itermcolors_files` (they are inside _schemes_ folder). 
 
-You can find inside [release](https://github.com/tux-eithel/color4tilix/releases/latest) Tilix color schemes translated starting from [Iterm2-color-schemes](https://iterm2colorschemes.com/).  
+## Download
+
+You can find inside [release](https://github.com/tux-eithel/color4tilix/releases/latest) Tilix color schemes translated starting from [Iterm2-color-schemes](https://iterm2colorschemes.com/).
+
 After the download, copy the json files inside `~/.config/tilix/schemes` directory.
 
 ## How to transform \*term\* color schemes into Tilix color schemes
 
-If you'd like to transform another terminal schema into Tilix color schemes, (and you're fine with `CreateBatch` workflow) you should do:
+If you'd like to transform another terminal schemes into Tilix color schemes, (and you're fine with `CreateBatch` workflow) you should do:
  
  - define a new struct which implements `Paletter` interface
  - provide a compatible `FncTransformer` function to transform input files

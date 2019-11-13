@@ -1,4 +1,4 @@
-// Package color4tilix is a library to help to translate terminal color schema to Tilix color schema.
+// Package lib is a library to help to translate terminal color schema to Tilix color schema.
 // It provides and maintains the struct necessary to create the right json for Tilix color schema.
 //
 // It defines an interface, Paletter, which can be used to define a new struct to translate an existing schema
@@ -12,7 +12,7 @@
 // If you'd like to transform another terminal schema into Tilix color schemes, (and you're fine with CreateBatch workflow) you should do:
 //  - define a new struct which implements Paletter interface
 //  - provide a compatible FncTransformer function
-package color4tilix
+package lib
 
 import (
 	"fmt"

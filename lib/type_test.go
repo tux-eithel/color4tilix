@@ -1,4 +1,4 @@
-package color4tilix
+package lib
 
 import (
 	"image/color"

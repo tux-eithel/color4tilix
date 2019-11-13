@@ -10,7 +10,7 @@ import (
 	"log"
 	"path/filepath"
 
-	"github.com/tux-eithel/color4tilix/lib"
+	color4tilix "github.com/tux-eithel/color4tilix/lib"
 )
 
 func main() {
